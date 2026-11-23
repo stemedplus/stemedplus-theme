@@ -1,9 +1,14 @@
 name: Tests
 
+# On every pull request and push, and once a week: the tests, and a check that every HuMeta
+# discipline term the discipline list uses still exists in humeta-profile and is not deprecated.
+
 on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: "23 12 * * 1"
 
 permissions:
   contents: read
@@ -17,3 +22,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m unittest discover -s tests -v
+      - name: HuMeta discipline terms are current
+        run: python check_humeta_terms.py

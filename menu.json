@@ -37,6 +37,10 @@
               "url": "https://stemedplus.github.io/stemed-funding/"
             },
             {
+              "label": "Awards",
+              "url": "https://stemedplus.github.io/stemed-awards/"
+            },
+            {
               "label": "Digest",
               "url": "https://stemedplus.github.io/STEMEd-Digest/"
             },
@@ -134,6 +138,10 @@
             {
               "label": "Share a Funding Opportunity",
               "url": "https://stemedplus.github.io/stemed-funding/#add"
+            },
+            {
+              "label": "Suggest an Award",
+              "url": "https://github.com/stemedplus/stemed-awards/issues/new?template=suggest_award.yml"
             },
             {
               "label": "Add a Conference",

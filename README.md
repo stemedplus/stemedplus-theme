@@ -27,6 +27,7 @@ site at its next build** (most sites build daily).
 |---|---|
 | STEMEd+ Jobs | [stemed-jobs](https://github.com/stemedplus/stemed-jobs) |
 | Find Funding | [stemed-funding](https://github.com/stemedplus/stemed-funding) |
+| STEMEd+ Awards | [stemed-awards](https://github.com/stemedplus/stemed-awards) |
 | STEMEd+ Digest | [STEMEd-Digest](https://github.com/stemedplus/STEMEd-Digest) |
 | Graduate Programs | [stem-ed-research-programs](https://github.com/stemedplus/stem-ed-research-programs) |
 | Conferences | [stemed-conferences](https://github.com/stemedplus/stemed-conferences) |
@@ -74,8 +75,26 @@ python sp_bar.py https://stemedplus.github.io/stemed-funding/
 ```
 
 This repository was split out of [HuMeta](https://github.com/stemedplus/HuMeta), where it lived in
-`standard/stemedplus_theme/`. The shared discipline list (`stemedplus_disciplines.json`) is part of
-the HuMeta profile, in [humeta-profile](https://github.com/stemedplus/humeta-profile).
+`standard/stemedplus_theme/`.
+
+## Shared discipline list
+
+`stemedplus_disciplines.json` is the master copy of the STEMEd+ disciplines used by every board
+(Jobs, Funding, Conferences, Professional Development, Awards, Digest, and Graduate Programs). Each
+board keeps a copy and refreshes it from here when it builds, keeping its own copy if the download
+fails or this one is older. Change the disciplines here, raise `version`, and copy the file into
+each board.
+
+Each discipline lists the ANZSRC 2020 Fields of Research it corresponds to (`humeta_disciplines`,
+as HuMeta terms; HuMeta maps each to the OECD Fields of Science used by DataCite and to the ERIC
+Thesaurus). Version 7 follows ANZSRC in giving Astronomy & Space Science (5101, 5109),
+Environmental Science (41), and Computing (46) their own disciplines. The list was first kept in
+[humeta-profile](https://github.com/stemedplus/humeta-profile), which now keeps a copy of this
+file; its Check workflow fails when the copy differs, so update it there after a change here.
+
+The list and HuMeta are checked in both directions. `check_humeta_terms.py` (run by the Tests
+workflow on every pull request and once a week) fails if a term the list uses is missing or
+deprecated in humeta-profile's `vocabularies.json`.
 
 ## Publishing rule for every STEMEd+ site
 
