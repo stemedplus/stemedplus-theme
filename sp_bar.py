@@ -8,7 +8,8 @@ with "groups" (headed lists, shown together in one wide panel, as Find is); or a
 The footer copies stemedplus.org's footer (what STEMEd+ Commons is, and its NSF and MSU support);
 its text is the "footer" entry of menu.json.
 
-The band needs no JavaScript: submenus open on hover or keyboard focus, and on narrow screens
+The band needs no JavaScript: submenus open on hover or keyboard focus (with an invisible bridge and a short grace
+period, so moving the pointer down into a panel doesn't close it), and on narrow screens
 a "Menu" button (a checkbox and its label) opens the whole menu as a list.
 
     python sp_bar.py [current-url] [logo-path]     # print the band's HTML
