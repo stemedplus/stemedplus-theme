@@ -47,10 +47,17 @@ a { color: var(--sp-green); }
 .sp-has.sp-here > a { text-decoration: underline; }
 .sp-chev { flex: none; transition: transform .15s; }
 .sp-sub { position: absolute; left: 0; top: 100%; z-index: 50; min-width: 220px; background: #fff; color: #111;
-          border: 1px solid rgba(0, 0, 0, .15); visibility: hidden; opacity: 0; transition: opacity .1s; }
+          border: 1px solid rgba(0, 0, 0, .15); visibility: hidden; opacity: 0;
+          /* A grace period before closing: the panel fades after .35s and is gone at .5s, so a wobble or a
+             diagonal move toward it doesn't shut it. Opening stays immediate (the rule below). */
+          transition: opacity .15s ease .35s, visibility 0s linear .5s; }
+/* An invisible bridge above each open panel, so the pointer stays "inside" while moving down to it. Find's wide
+   panel starts about 40px below the word Find; without this, crossing that strip closed it. */
+.sp-sub::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 12px; }
+.sp-mega::before { height: 48px; }
 .sp-sub a { display: block; color: #111; padding: 9px 18px; white-space: nowrap; }
 .sp-sub a[aria-current="page"] { text-decoration: underline; }
-.sp-has:hover > .sp-sub, .sp-has:focus-within > .sp-sub { visibility: visible; opacity: 1; }
+.sp-has:hover > .sp-sub, .sp-has:focus-within > .sp-sub { visibility: visible; opacity: 1; transition-delay: 0s, 0s; }
 .sp-has:hover > .sp-chev, .sp-has:focus-within > .sp-chev { transform: rotate(180deg); }
 .sp-label { font: inherit; color: #fff; background: none; border: 0; padding: 0; cursor: pointer; }
 .sp-label:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
@@ -96,7 +103,8 @@ a { color: var(--sp-green); }
   .sp-top { display: block; padding: 6px 0 10px; }
   .sp-top > li { display: block; padding: 6px 0; }
   .sp-chev { display: none; }
-  .sp-nav .sp-sub { position: static; visibility: visible; opacity: 1; background: none; border: 0; min-width: 0; padding: 2px 0 0 16px; }
+  .sp-nav .sp-sub { position: static; visibility: visible; opacity: 1; background: none; border: 0; min-width: 0; padding: 2px 0 0 16px; transition: none; }
+  .sp-nav .sp-sub::before { content: none; }
   .sp-sub a { color: #fff; padding: 4px 0; white-space: normal; font-weight: 500; }
   .sp-label { font-size: 18px; font-weight: 600; cursor: default; }
   .sp-mega, .sp-mega-small { display: block; box-shadow: none; padding: 2px 0 0 16px; border-radius: 0; width: auto; }
