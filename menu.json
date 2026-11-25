@@ -185,6 +185,10 @@
             {
               "label": "Partner with Us",
               "url": "https://stemedplus.org/collaborate/"
+            },
+            {
+              "label": "Open by Design",
+              "url": "https://stemedplus.github.io/stemed-start-here/open/"
             }
           ]
         },
