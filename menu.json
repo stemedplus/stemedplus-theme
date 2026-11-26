@@ -62,15 +62,15 @@
               "url": "https://stemedplus.github.io/stemed-collaborators/"
             },
             {
-              "label": "Groups to Join",
+              "label": "STEMEd+ Groups to Join",
               "url": "https://stemedplus.org/stemed-groups/"
             },
             {
-              "label": "Sites to Explore",
+              "label": "STEMEd+ Sites to Explore",
               "url": "https://stemedplus.org/sites/"
             },
             {
-              "label": "Members",
+              "label": "STEMEd+ Members",
               "url": "https://stemedplus.profile.hcommons.org/members/"
             }
           ]
@@ -93,19 +93,19 @@
           "heading": "For You & Your Team",
           "links": [
             {
-              "label": "Set Up Your Profile",
+              "label": "Set Up Your STEMEd+ Profile",
               "url": "https://stemedplus.profile.hcommons.org/edit-profile/"
             },
             {
-              "label": "Create a Group",
+              "label": "Create a STEMEd+ Group",
               "url": "https://stemedplus.org/stemed-groups/create/step/group-details/"
             },
             {
-              "label": "Create a Site",
+              "label": "Create a STEMEd+ Site",
               "url": "https://stemedplus.org/sites/create/"
             },
             {
-              "label": "Request a Collection",
+              "label": "Request a STEMEd+ Collection",
               "url": "https://stemedplus.org/contact-us/"
             }
           ]
@@ -119,7 +119,7 @@
           "heading": "Your Work",
           "links": [
             {
-              "label": "Add a Work to the Library",
+              "label": "Add a Work to the STEMEd+ Library",
               "url": "https://works.hcommons.org/uploads/new?community=stemedplus&page=1"
             },
             {
@@ -138,10 +138,6 @@
             {
               "label": "Share a Funding Opportunity",
               "url": "https://stemedplus.github.io/stemed-funding/#add"
-            },
-            {
-              "label": "Suggest an Award",
-              "url": "https://github.com/stemedplus/stemed-awards/issues/new?template=suggest_award.yml"
             },
             {
               "label": "Add a Conference",
@@ -185,10 +181,6 @@
             {
               "label": "Partner with Us",
               "url": "https://stemedplus.org/collaborate/"
-            },
-            {
-              "label": "Open by Design",
-              "url": "https://stemedplus.github.io/stemed-start-here/open/"
             }
           ]
         },
