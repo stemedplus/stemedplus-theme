@@ -36,7 +36,7 @@ Each board is a GitHub repository in the **stemedplus** organization, published 
 | Funding | `kind` | K-12 and teachers · Outreach and informal learning · Teaching and curriculum · Students and training · Research |
 | Professional Development | `audience` | K-12 teachers · Informal educators · Faculty and instructors · Graduate students and postdocs |
 | Awards | `level`, `recognizes` | K-12 · Informal and public (level); Teaching (recognizes) |
-| Jobs | `aud` | teaching · postdocs |
+| Jobs | `aud` | teaching · postdocs · staff |
 | Conferences | `kind` | education |
 
 ## This repository
