@@ -29,6 +29,16 @@ Each board is a GitHub repository in the **stemedplus** organization, published 
 
 **Running locally.** In any Python board: `pip install -r requirements.txt`, then `python -m unittest discover -s tests -t .`, then the build command on its card. Open `output/index.html` through a local web server.
 
+**Home page shortcuts.** The "Shortcuts for you" box on the stemedplus.org home page links to boards with a filter already chosen, by putting the filter's value in the address (for example `stemed-funding/#kind=K-12%20and%20teachers`). If you rename or remove one of the values below, update its link in the home page's Custom HTML block, or the shortcut opens the board unfiltered.
+
+| Board | Filter | Values the shortcuts use |
+|---|---|---|
+| Funding | `kind` | K-12 and teachers · Outreach and informal learning · Teaching and curriculum · Students and training · Research |
+| Professional Development | `audience` | K-12 teachers · Informal educators · Faculty and instructors · Graduate students and postdocs |
+| Awards | `level`, `recognizes` | K-12 · Informal and public (level); Teaching (recognizes) |
+| Jobs | `aud` | teaching · postdocs |
+| Conferences | `kind` | education |
+
 ## This repository
 
 | | |
