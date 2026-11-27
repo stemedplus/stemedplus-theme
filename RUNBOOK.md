@@ -29,7 +29,7 @@ Each board is a GitHub repository in the **stemedplus** organization, published 
 
 **Running locally.** In any Python board: `pip install -r requirements.txt`, then `python -m unittest discover -s tests -t .`, then the build command on its card. Open `output/index.html` through a local web server.
 
-**Home page shortcuts.** The "Shortcuts for you" box on the stemedplus.org home page links to boards with a filter already chosen, by putting the filter's value in the address (for example `stemed-funding/#kind=K-12%20and%20teachers`). If you rename or remove one of the values below, update its link in the home page's Custom HTML block and in the "If you’re a…" list on Start Here (stemed-start-here, `site/index.html`), or the shortcut opens the board unfiltered.
+**Home page shortcuts.** The "Shortcuts for you" box on the stemedplus.org home page links to boards with a filter already chosen, by putting the filter's value in the address (for example `stemed-funding/#kind=K-12%20and%20teachers`). If you rename or remove one of the values below, update its link in the home page's Custom HTML block and in the "You belong here" cards on Start Here (stemed-start-here, `site/index.html`), or the shortcut opens the board unfiltered.
 
 | Board | Filter | Values the shortcuts use |
 |---|---|---|
