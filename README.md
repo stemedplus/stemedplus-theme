@@ -53,6 +53,9 @@ site at its next build** (most sites build daily).
    `current` is the site's address as it appears in `menu.json`, so its menu item is marked. Leave it
    out for a site that isn't in the menu. `logo` sets the band's image path, if it isn't
    `stemedplus-commons-logo-white.png`.
+
+   Each band page with a `<head>` also gets the STEMEd+ browser-tab icon. If a page's `<head>` is
+   in another file (a template), list that file under `"icon_files"`.
 3. Add this step to the site's build workflow, before the build:
 
    ```yaml
