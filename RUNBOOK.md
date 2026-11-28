@@ -27,6 +27,8 @@ Each board is a GitHub repository in the **stemedplus** organization, published 
 | The site is down but the run is green | Check **Settings → Pages**: the source should be **GitHub Actions**. |
 | A repository was deleted | Restore it within 90 days in the organization's settings (see the Backup Plan). |
 
+**Visit counts.** Every board's footer carries a GoatCounter counter, so visits are counted anonymously, with no cookies. See them at [stemedplus.goatcounter.com](https://stemedplus.goatcounter.com), by board (the path starts with the repository name) and by where visitors came from. Pages built with `"footer": false` aren't counted. The counter's address is `GOATCOUNTER` in `sp_bar.py`. stemedplus.org has its own GoatCounter site, pasted in by hand as a Custom HTML block in the WordPress footer.
+
 **Running locally.** In any Python board: `pip install -r requirements.txt`, then `python -m unittest discover -s tests -t .`, then the build command on its card. Open `output/index.html` through a local web server.
 
 **Home page shortcuts.** The "Shortcuts for you" box on the stemedplus.org home page links to boards with a filter already chosen, by putting the filter's value in the address (for example `stemed-funding/#kind=K-12%20and%20teachers`). If you rename or remove one of the values below, update its link in the home page's Custom HTML block and in the "You belong here" cards on Start Here (stemed-start-here, `site/index.html`), or the shortcut opens the board unfiltered.
@@ -44,7 +46,7 @@ Each board is a GitHub repository in the **stemedplus** organization, published 
 | | |
 |---|---|
 | **Repository** | stemedplus/stemedplus-theme |
-| **What it holds** | `menu.json` (the menu), `sp_bar.py` (builds the bar and footer), `assets/` (styles), `apply.py` (what each board runs) |
+| **What it holds** | `menu.json` (the menu), `sp_bar.py` (builds the bar and footer, including the GoatCounter visit counter), `assets/` (styles), `apply.py` (what each board runs) |
 | **Tests** | Run on every push and pull request, and weekly on Mondays at 12:23 UTC (`tests.yml`). The weekly run also checks that every HuMeta discipline term in use still exists and isn't deprecated. |
 
 **Change the menu:** edit `menu.json`, push, and let tests pass. Each board picks it up on its next run; re-run a board to see it sooner.
