@@ -112,6 +112,13 @@ class FooterTests(unittest.TestCase):
         for text in ("Knowledge Commons", "OAC-2226271", "DRL-2321946", "OAC-2531819", "Jenison Fund"):
             self.assertIn(text, foot)
 
+    def test_footer_counts_visits_once(self):
+        foot = sp_bar.footer()
+        self.assertEqual(foot.count("stemedplus.goatcounter.com/count"), 1)
+        self.assertTrue(foot.endswith("</script></footer>"))
+        for ch in "{}`'\\":
+            self.assertNotIn(ch, foot)
+
     def test_footer_is_added_once_below_the_page_and_then_refreshed(self):
         with tempfile.TemporaryDirectory() as tmp:
             page = f"<html><body>{OLD_BAND}<main>Hi</main><footer>Site footer</footer></body></html>"

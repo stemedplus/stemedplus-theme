@@ -6,7 +6,8 @@ site picks it up on its next build. An item can be a link; a link or label with 
 with "groups" (headed lists, shown together in one wide panel, as Find is); or a link with "button": true.
 
 The footer copies stemedplus.org's footer (what STEMEd+ Commons is, and its NSF and MSU support);
-its text is the "footer" entry of menu.json.
+its text is the "footer" entry of menu.json. The footer also carries the GoatCounter visit counter
+(stemedplus.goatcounter.com): cookieless and anonymous, so every board's visits are counted in one place.
 
 The band needs no JavaScript: submenus open on hover or keyboard focus (with an invisible bridge and a short grace
 period, so moving the pointer down into a panel doesn't close it), and on narrow screens
@@ -22,6 +23,10 @@ import sys
 from pathlib import Path
 
 MENU_FILE = Path(__file__).with_name("menu.json")
+# Anonymous, cookieless visit counting for every board (dashboard: https://stemedplus.goatcounter.com).
+# Double quotes only: sites put the footer inside code templates (see load_menu).
+GOATCOUNTER = ('<script data-goatcounter="https://stemedplus.goatcounter.com/count" '
+               'async src="https://gc.zgo.at/count.js"></script>')
 CHEVRON = ('<svg class="sp-chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">'
            '<path d="M1.5 4L6 8L10.5 4" stroke="currentColor" stroke-width="1.5"/></svg>')
 
@@ -63,7 +68,7 @@ def load_menu(path: Path = MENU_FILE) -> dict:
 def footer(menu: dict = None) -> str:
     """The STEMEd+ Commons footer's HTML, as on stemedplus.org."""
     menu = menu or load_menu()
-    return f'<footer class="sp-footer"><div class="sp-fin"><p>{menu["footer"]}</p></div></footer>'
+    return f'<footer class="sp-footer"><div class="sp-fin"><p>{menu["footer"]}</p></div>{GOATCOUNTER}</footer>'
 
 
 def bar(current: str = "", logo: str = "stemedplus-commons-logo-white.png", menu: dict = None) -> str:
