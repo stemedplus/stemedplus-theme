@@ -173,3 +173,52 @@ class LoginSpellingTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class IconTests(unittest.TestCase):
+    def test_icon_is_added_once_to_the_head_and_then_refreshed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            page = f"<html><head><title>T</title></head><body>{OLD_BAND}<main>Hi</main></body></html>"
+            site = make_site(Path(tmp), {"bars": [{"file": "site/index.html", "current": FUNDING}]}, page)
+            self.assertEqual(apply.main(["apply", str(site)]), 0)
+            self.assertEqual(apply.main(["apply", str(site)]), 0)
+            html = (site / "site" / "index.html").read_text()
+            self.assertEqual(html.count('rel="icon"'), 1)
+            self.assertLess(html.index('rel="icon"'), html.index("</head>"))
+            self.assertIn("data:image/png;base64,", html)
+
+    def test_old_icon_is_replaced(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            page = f'<html><head><link rel="icon" href="old.ico"></head><body>{OLD_BAND}</body></html>'
+            site = make_site(Path(tmp), {"bars": [{"file": "site/index.html"}]}, page)
+            apply.main(["apply", str(site)])
+            html = (site / "site" / "index.html").read_text()
+            self.assertNotIn("old.ico", html)
+            self.assertEqual(html.count('rel="icon"'), 1)
+
+    def test_page_without_head_is_left_without_icon(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = make_site(Path(tmp), {"bars": [{"file": "site/index.html"}]})
+            self.assertEqual(apply.main(["apply", str(site)]), 0)
+            self.assertNotIn('rel="icon"', (site / "site" / "index.html").read_text())
+
+    def test_icon_files_get_the_icon(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = make_site(Path(tmp), {"bars": [{"file": "site/index.html"}], "icon_files": ["site/board.html"]})
+            (site / "site" / "board.html").write_text("<html><head><title>B</title></head><body></body></html>")
+            self.assertEqual(apply.main(["apply", str(site)]), 0)
+            self.assertEqual((site / "site" / "board.html").read_text().count('rel="icon"'), 1)
+
+    def test_icon_file_without_head_changes_nothing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = make_site(Path(tmp), {"bars": [{"file": "site/index.html"}], "icon_files": ["site/board.html"]})
+            (site / "site" / "board.html").write_text("<p>no head</p>")
+            before = (site / "site" / "index.html").read_text()
+            self.assertEqual(apply.main(["apply", str(site)]), 1)
+            self.assertEqual((site / "site" / "index.html").read_text(), before)
+
+    def test_icon_tag_fits_in_code_templates(self):
+        tag = sp_bar.icon()
+        for ch in "{}`'\\":
+            self.assertNotIn(ch, tag)
+

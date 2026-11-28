@@ -16,6 +16,7 @@ a "Menu" button (a checkbox and its label) opens the whole menu as a list.
     python sp_bar.py [current-url] [logo-path]     # print the band's HTML
     python sp_bar.py --footer                      # print the footer's HTML
 """
+import base64
 import html
 import json
 import re
@@ -23,6 +24,7 @@ import sys
 from pathlib import Path
 
 MENU_FILE = Path(__file__).with_name("menu.json")
+ICON_FILE = Path(__file__).parent / "icon" / "stemedplus-icon-64.png"
 # Anonymous, cookieless visit counting for every board (dashboard: https://stemedplus.goatcounter.com).
 # Double quotes only: sites put the footer inside code templates (see load_menu).
 GOATCOUNTER = ('<script data-goatcounter="https://stemedplus.goatcounter.com/count" '
@@ -63,6 +65,12 @@ def load_menu(path: Path = MENU_FILE) -> dict:
         if not href.startswith("https://"):
             raise ValueError(f"menu.json: footer links must be https:// URLs: {href!r}")
     return menu
+
+
+def icon() -> str:
+    """The browser-tab icon (white S+ on STEMEd+ green) as a <link> tag, with the image inside it."""
+    data = base64.b64encode(ICON_FILE.read_bytes()).decode("ascii")
+    return f'<link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,{data}">'
 
 
 def footer(menu: dict = None) -> str:
